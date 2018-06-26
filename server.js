@@ -19,7 +19,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', router);
 
 
-/* GET home page. */
 router.get('/chain', function(req, res, next) {
   res.send(blockchain.getChain());
 });
