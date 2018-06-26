@@ -23,7 +23,14 @@ app.use('/', router);
 router.get('/chain', function(req, res, next) {
   res.send(blockchain.getChain());
 });
+router.post('/mine', function(req, res, next) {
+  var miningNode = req.headers.host;
+  if(!network.nodeExists(miningNode)){
+    network.registerNode(miningNode);
+  }
+  res.send(blockchain.mine(req.headers.host));
 
+});
 
 router.get('/nodes', function(req, res, next) {
   res.send(network.getNodes());

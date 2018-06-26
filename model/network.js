@@ -8,6 +8,7 @@ var network = function network(){
   this.init = init;
   this.registerNode = registerNode;
   this.getNodes = getNodes;
+  this.nodeExists = nodeExists;
 
   this.nodes;
 
@@ -23,6 +24,17 @@ var network = function network(){
 
   function getNodes(){
     return self.nodes;
+  }
+
+  function nodeExists(node){
+    var found = false;
+    node = addressUtilities.parseAddress(node);
+    self.nodes.forEach(function(thisNode){
+      if(thisNode.host === node.host && thisNode.port === node.port){
+        found = true;
+      }
+    });
+    return found;
   }
 
   if(network.caller != network.getInstance){
