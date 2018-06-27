@@ -36,9 +36,16 @@ router.get('/nodes', function(req, res, next) {
 });
 
 router.post('/nodes/register', function(req, res, next) {
-  var added = network.registerNode(req.headers.host);
-  res.send(added);
+  res.send(network.registerNode(req.headers.host));
 });
+
+router.post('/transactions', function(req, res, next){
+
+});
+
+router.post('/checkChain', function(req, res, next){
+  res.send(blockchain.checkChain());
+})
 
 
 

@@ -10,6 +10,7 @@ var blockchain = function blockchain(){
   this.newBlock = newBlock;
   this.newTransaction = newTransaction;
   this.getChain = getChain;
+  this.checkChain = checkChain;
   this.mine = mine;
 
   this.chain;
@@ -73,6 +74,14 @@ var blockchain = function blockchain(){
     };
     self.currentTransactions.push(transaction);
     return transaction;
+  }
+
+  function checkChain(){
+    /*
+    *  Check if the current chain is valid
+    */
+    var isItValid = chain.isValidChain(self.chain);
+    return isItValid ? self.chain : [];
   }
 
 

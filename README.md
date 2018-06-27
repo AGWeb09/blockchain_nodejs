@@ -18,6 +18,8 @@ It contains the core implementations of mine blockchain.
   Generate a new transaction and adds it to the currentTransactions array which will be added in the next new block
 * **mine** (miner) => block
   Mines a new block, assigns it to the miner and generate the associated block
+* **checkChain** ()  => chain
+  Check if the current chain is valid, and returns it if valid or an empty chain otherwise
 
 ### Network.js
 
