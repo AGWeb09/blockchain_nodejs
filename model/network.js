@@ -19,7 +19,7 @@ var network = function network(){
   function registerNode(address){
     var fixedAddress = addressUtilities.parseAddress(address);
     var found = arrayUtilities.addToSet(self.nodes, fixedAddress, ['host', 'port']);
-    return found;
+    return !found;
   }
 
   function getNodes(){
