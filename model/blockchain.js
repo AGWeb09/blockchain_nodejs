@@ -16,16 +16,29 @@ var blockchain = function blockchain(){
   this.currentTransactions;
 
   function init(){
+    /*
+    *  initialize the blockchain, creating a new empty chain,
+    *  an empty transactions list and creating the first block
+    */
     self.chain = [];
     self.currentTransactions = [];
     self.newBlock(100, 1);
   }
 
   function getChain(){
+    /*
+    *  returns the chain
+    */
     return self.chain;
   }
 
   function mine(miner){
+    /*
+    *  implements the mining function. simple as is, it just
+    *  creates a new transaction with "sender" 0 to show that
+    *  this is a mined block.
+    */
+
     var lastBlock = self.chain[self.chain.length-1];
     var transaction = newTransaction(0,miner,1);
     var proof = validator.generateProof(transaction);
@@ -34,6 +47,9 @@ var blockchain = function blockchain(){
   }
 
   function newBlock(proof, previousHash){
+    /*
+    *  Generate a new blocks and adds it to the chain
+    */
     var block = {
       "index": self.chain.length+1,
       "timestamp": new Date().getTime(),
@@ -47,6 +63,9 @@ var blockchain = function blockchain(){
   }
 
   function newTransaction(sender, receiver, amount){
+    /*
+    *  Generate a new transaction
+    */
     var transaction = {
       sender: sender,
       receiver: receiver,
